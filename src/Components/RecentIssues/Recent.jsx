@@ -26,7 +26,7 @@ const Recent = () => {
     console.log(recentIssue)
     return (
       <div className="maxWidth mx-7 md:mx-7  lg:mx-auto   ">
-        <h1 className="text-center text-4xl font-bold mb-10">Recent Issues </h1>
+        <h1 className="text-center text-4xl font-bold mb-10 text-green-700">Recent Issues </h1>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4  mb-40">
           {recentIssue.map((issue) => (
             <div className=" custom-card rounded-2xl w-full bg-white shadow-2xl">

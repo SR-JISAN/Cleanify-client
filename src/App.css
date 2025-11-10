@@ -608,19 +608,6 @@ ul a.active {
   cursor: pointer;
 }
 
-.custom-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  left: -5px;
-  margin: auto;
-  
-  border-radius: 16px;
-  background: linear-gradient(-45deg, #2ddc1a 0%, #13b4bd 100% );
-  z-index: -10;
-  pointer-events: none;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
 
 .custom-card::after {
   content: "";

@@ -1,15 +1,21 @@
 import React from 'react';
 import Banner from '../../Components/Banner/Banner';
-import Slider from '../../Components/Banner/Slider';
 import Recent from '../../Components/RecentIssues/Recent';
+import VolunteerCTA from '../../Components/VolenteerCTA/VolunteerCTA';
+import Category from '../../Components/Banner/Category';
+import Community from '../../Components/Community/Community';
+
 
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Slider></Slider>
+           <Category></Category>
            <Recent></Recent>
+           <Community></Community>
+           <VolunteerCTA></VolunteerCTA>
+           
         </div>
     );
 };

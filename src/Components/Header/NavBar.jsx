@@ -75,7 +75,7 @@ const NavBar = () => {
               </div>
             </div>
 
-            <Link to="/" className="font-bold text-2xl">
+            <Link to="/" className="font-bold text-2xl text-green-700">
               🌿 Cleanify
             </Link>
           </div>
