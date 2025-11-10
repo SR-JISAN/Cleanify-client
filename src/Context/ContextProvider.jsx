@@ -56,6 +56,7 @@ function ContextProvider({ children }) {
     singOutUser,
     user,
     loading,
+    setLoading,
   };
   return (
     <AuthContext.Provider value={authInfo}>

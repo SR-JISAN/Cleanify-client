@@ -12,45 +12,49 @@ import Issues from "../Pages/Issues/Issues";
 
 
  const Router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root></Root>,
-    errorElement: <><h1>error</h1></>,
-    children: [
-      {
-        path:'/',
-        index:true,
-        element: <Home></Home>
-      },
-      {
-        path:'/home',
-        element: <Home></Home>
-      },
-      {
-        path:'/issues',
-        element: <Issues></Issues>
-      },
-      {
-        path:'/login',
-        element: <LogIn></LogIn>
-      },
-      {
-        path:'/register',
-        element: <Register></Register>
-      },
-      {
-        path:'/myIssue',
-        element: <MyIssue></MyIssue>
-      },
-      {
-        path:'/addIssue',
-        element: <AddIssue></AddIssue>
-      },
-      {
-        path:'/myContribution',
-        element: <MyContribution></MyContribution>
-      },
-    ]
-  },
-]);
+   {
+     path: "/",
+     element: <Root></Root>,
+     errorElement: (
+       <>
+         <h1>error</h1>
+       </>
+     ),
+     children: [
+       {
+         path: "/",
+         index: true,
+         element: <Home></Home>,
+       },
+       {
+         path: "/home",
+         element: <Home></Home>,
+       },
+       {
+         path: "/issues",
+         element: <Issues></Issues>,
+       },
+       {
+         path: "/login",
+         element: <LogIn></LogIn>,
+       },
+       {
+         path: "/register",
+         element: <Register></Register>,
+       },
+       {
+         path: "/myIssue",
+         element: <MyIssue></MyIssue>,
+       },
+       {
+         path: "/addIssue",
+         element: <AddIssue></AddIssue>,
+       },
+       {
+         path: "/myContribution",
+         element: <MyContribution></MyContribution>,
+       },
+     ],
+   },
+ ]);
 export default Router

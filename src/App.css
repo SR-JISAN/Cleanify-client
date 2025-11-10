@@ -16,6 +16,7 @@ ul a.active {
 
 
 
+
 .my-btn {
   position: relative;
   display: flex;
@@ -333,6 +334,8 @@ ul a.active {
 .custom-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(29, 234, 60, 0.527);
+  color: #fff;
 }
 
 .custom-btn:active {
@@ -363,7 +366,7 @@ ul a.active {
 }
 
 
-/* From Uiverse.io by anand_4957 */ 
+ /* loader css */
 .loader {
   position: absolute;
   top: 50%;
@@ -593,11 +596,10 @@ ul a.active {
   }
 }
 
-/* From Uiverse.io by gharsh11032000 */ 
+
 .custom-card {
   position: relative;
-  width: 90%;
-  height: 254px;
+  
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -612,10 +614,9 @@ ul a.active {
   inset: 0;
   left: -5px;
   margin: auto;
-  width: 100%;
-  /* height: 264px; */
+  
   border-radius: 16px;
-  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+  background: linear-gradient(-45deg, #2ddc1a 0%, #13b4bd 100% );
   z-index: -10;
   pointer-events: none;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -626,25 +627,11 @@ ul a.active {
   z-index: -1;
   position: absolute;
   inset: 0;
-  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+  background: linear-gradient(-45deg, #15ff00 0%, #00dbde 100% );
   transform: translate3d(0, 0, 0) scale(0.95);
   filter: blur(20px);
 }
 
-.heading {
-  font-size: 20px;
-  text-transform: capitalize;
-  font-weight: 700;
-}
-
-.custom-card p:not(.heading) {
-  font-size: 14px;
-}
-
-.custom-card p:last-child {
-  color: #e81cff;
-  font-weight: 600;
-}
 
 .custom-card:hover::after {
   filter: blur(30px);
