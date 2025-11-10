@@ -1,0 +1,205 @@
+[
+  {
+    "id": "ISSUE-1001",
+    "title": "Overflowing Garbage Bins",
+    "category": "Garbage",
+    "location": "Dhaka, Mirpur-10",
+    "description": "Public garbage bins are overflowing and causing a foul smell in the area.",
+    "image": "https://i.ibb.co/7dJW5WGZ/cute-cat-sitting-rubbish-bin-outdoors-1.jpg",
+    "date": "2025-11-05",
+    "amount": 1200
+  },
+  {
+    "id": "ISSUE-1002",
+    "title": "Plastic Waste in Lake",
+    "category": "Water Pollution",
+    "location": "Chittagong, Foy’s Lake",
+    "description": "Large amount of plastic bottles and food packets floating on the lake surface.",
+    "image": "https://i.ibb.co/TByC7NMN/river-coast-with-lot-scattered-plastic-bottles-1.jpg",
+    "date": "2025-11-02",
+    "amount": 1800
+  },
+  {
+    "id": "ISSUE-1003",
+    "title": "Illegal Dumping Behind Market",
+    "category": "Garbage",
+    "location": "Khulna, New Market Area",
+    "description": "Vendors dumping waste materials behind the market without proper disposal.",
+    "image": "https://i.ibb.co/qM0NPj8K/young-woman-sorting-garbage-concept-recycling-zero-waste-1.jpg",
+    "date": "2025-10-28",
+    "amount": 950
+  },
+  {
+    "id": "ISSUE-1004",
+    "title": "Blocked Drainage System",
+    "category": "Waterlogging",
+    "location": "Dhaka, Badda",
+    "description": "Drainage system blocked due to accumulated plastic waste, causing flooding during rain.",
+    "image": "https://i.ibb.co/pB2TtjJh/Screenshot-2025-11-11-005233.png",
+    "date": "2025-11-01",
+    "amount": 2200
+  },
+  {
+    "id": "ISSUE-1005",
+    "title": "Uncollected Household Waste",
+    "category": "Garbage",
+    "location": "Gazipur, Tongi",
+    "description": "Waste collection service has been inactive for a week, leading to pileups of garbage bags.",
+    "image": "https://i.ibb.co/WWDmRRvQ/plastic-garbage-conveyor-belt-waste-recycling-factory-workers-background-1.jpg",
+    "date": "2025-10-30",
+    "amount": 1300
+  },
+  {
+    "id": "ISSUE-1006",
+    "title": "Littered Park Area",
+    "category": "Public Cleanliness",
+    "location": "Dhaka, Ramna Park",
+    "description": "Visitors leaving behind food wrappers and bottles after picnics.",
+    "image": "https://i.ibb.co/rG18h6bp/bullets-arrangement-russian-s-war-ukraine-1.jpg",
+    "date": "2025-11-04",
+    "amount": 900
+  },
+  {
+    "id": "ISSUE-1007",
+    "title": "Industrial Waste Leakage",
+    "category": "Chemical Pollution",
+    "location": "Narayanganj, Shitalakshya River",
+    "description": "Nearby factory releasing untreated chemical waste directly into the river.",
+    "image": "https://i.ibb.co/rf7ZgwQR/man-collecting-scattered-plastic-bottles-from-ground-1.jpg",
+    "date": "2025-10-25",
+    "amount": 3500
+  },
+  {
+    "id": "ISSUE-1008",
+    "title": "Illegal Landfill Expansion",
+    "category": "Land Pollution",
+    "location": "Rajshahi, Boalia",
+    "description": "Unauthorized landfill site expanding into residential area.",
+    "image": "https://i.ibb.co/TBH5mCm9/Screenshot-2025-11-11-010403.png",
+    "date": "2025-10-31",
+    "amount": 5000
+  },
+  {
+    "id": "ISSUE-1009",
+    "title": "Broken Footpath with Waste",
+    "category": "Public Safety",
+    "location": "Dhaka, Gulshan-2",
+    "description": "Footpath damaged and covered with litter, making it unsafe for pedestrians.",
+    "image": "https://i.ibb.co/pjY1cV32/Screenshot-2025-11-11-010220.png",
+    "date": "2025-11-03",
+    "amount": 2500
+  },
+  {
+    "id": "ISSUE-1010",
+    "title": "E-waste Dump Site",
+    "category": "Electronic Waste",
+    "location": "Sylhet, Subidbazar",
+    "description": "Discarded computers, phones, and batteries dumped in open field.",
+    "image": "https://i.ibb.co/b54RXpNB/Screenshot-2025-11-11-010123.png",
+    "date": "2025-10-27",
+    "amount": 4200
+  },
+  {
+    "id": "ISSUE-1011",
+    "title": "Plastic Bottles Near School",
+    "category": "Garbage",
+    "location": "Dhaka, Uttara Sector-4",
+    "description": "Students littering plastic bottles and wrappers near school playground.",
+    "image": "https://i.ibb.co/rG18h6bp/bullets-arrangement-russian-s-war-ukraine-1.jpg",
+    "date": "2025-11-06",
+    "amount": 600
+  },
+  {
+    "id": "ISSUE-1012",
+    "title": "Unattended Dead Tree Blocking Road",
+    "category": "Public Safety",
+    "location": "Khulna, Daulatpur",
+    "description": "Fallen tree from storm blocking the main road and collecting debris underneath.",
+    "image": "https://i.ibb.co/nNg91gRQ/Screenshot-2025-11-11-010316.png",
+    "date": "2025-11-07",
+    "amount": 1700
+  },
+  {
+    "id": "ISSUE-1013",
+    "title": "Sewage Overflow in Street",
+    "category": "Water Pollution",
+    "location": "Dhaka, Mohammadpur",
+    "description": "Broken sewage pipeline flooding the street with dirty water.",
+    "image": "https://i.ibb.co/p6gN9M08/Screenshot-2025-11-11-010454.png",
+    "date": "2025-10-29",
+    "amount": 2800
+  },
+  {
+    "id": "ISSUE-1014",
+    "title": "Dumped Construction Debris",
+    "category": "Land Pollution",
+    "location": "Gazipur, Konabari",
+    "description": "Construction company dumping bricks and cement waste on public land.",
+    "image": "https://i.ibb.co/d4qs28ZV/Screenshot-2025-11-11-011215.png",
+    "date": "2025-11-08",
+    "amount": 1900
+  },
+  {
+    "id": "ISSUE-1015",
+    "title": "Oil Spill in Drain",
+    "category": "Chemical Pollution",
+    "location": "Barisal, Rupatali",
+    "description": "Local workshop releasing engine oil and grease into nearby drain.",
+    "image": "https://i.ibb.co/FLNDD7ss/Screenshot-2025-11-11-004518.png",
+    "date": "2025-11-09",
+    "amount": 2700
+  },
+  {
+    "id": "ISSUE-1016",
+    "title": "Mosquito Breeding Site",
+    "category": "Health Hazard",
+    "location": "Dhaka, Jatrabari",
+    "description": "Stagnant water in open containers causing mosquito breeding.",
+    "image": "https://i.ibb.co/k2HFw3NK/Screenshot-2025-11-11-010832.png",
+    "date": "2025-10-26",
+    "amount": 800
+  },
+  {
+    "id": "ISSUE-1017",
+    "title": "Unclean Bus Terminal",
+    "category": "Public Cleanliness",
+    "location": "Chittagong, Oxygen Bus Stand",
+    "description": "Littered area with uncollected food waste and paper wrappers.",
+    "image": "https://i.ibb.co/7NzRCD1V/Screenshot-2025-11-11-011032.png",
+    "date": "2025-10-30",
+    "amount": 1000
+  },
+  {
+    "id": "ISSUE-1018",
+    "title": "Garbage Burning by Locals",
+    "category": "Air Pollution",
+    "location": "Rangpur, Lalbagh",
+    "description": "Residents burning garbage in open field, causing toxic smoke.",
+    "image": "https://i.ibb.co/BVGMFY7w/Screenshot-2025-11-11-011122.png",
+    "date": "2025-11-01",
+    "amount": 1600
+  },
+  {
+    "id": "ISSUE-1019",
+    "title": "Abandoned Vehicles with Waste",
+    "category": "Public Safety",
+    "location": "Dhaka, Tejgaon",
+    "description": "Old abandoned vehicles gathering garbage and insects underneath.",
+    "image": "https://i.ibb.co/5g1R9Q01/Screenshot-2025-11-11-010553.png",
+    "date": "2025-11-04",
+    "amount": 2100
+  },
+  {
+    "id": "ISSUE-1020",
+    "title": "Community Pond Pollution",
+    "category": "Water Pollution",
+    "location": "Mymensingh, Town Hall Area",
+    "description": "Household waste and soap residue being released into local pond.",
+    "image": "https://i.ibb.co/SXxndjCN/Screenshot-2025-11-11-011252.png",
+    "date": "2025-11-05",
+    "amount": 3100
+  }
+]
+
+
+
