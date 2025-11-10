@@ -6,6 +6,7 @@ import LogIn from "../Pages/LogIn/LogIn";
 import MyIssue from "../Pages/MyIssue/MyIssue";
 import AddIssue from "../Pages/AddIssue/AddIssue";
 import MyContribution from "../Pages/MyContribution/MyContribution";
+import Issues from "../Pages/Issues/Issues";
 
 
 
@@ -27,7 +28,7 @@ import MyContribution from "../Pages/MyContribution/MyContribution";
       },
       {
         path:'/issues',
-        element: <Home></Home>
+        element: <Issues></Issues>
       },
       {
         path:'/login',

@@ -14,6 +14,7 @@ const NavBar = () => {
       singOutUser()
         .then((result) => {
           console.log(result);
+          setMenu(false);
         })
         .catch((err) => {
           console.log(err);
@@ -54,7 +55,7 @@ const NavBar = () => {
     );
     
     return (
-      <nav className="bg-white shadow-sm">
+      <nav className="bg-white shadow-sm relative z-50">
         <div className="navbar maxWidth mx-auto">
           <div className="navbar-start ">
             <div onClick={handleMenu} className="mr-3 lg:hidden">
@@ -98,7 +99,7 @@ const NavBar = () => {
                 </div>
                 <ul
                   tabIndex="-1"
-                  className="menu menu-sm dropdown-content bg-white text-black rounded-box z-1 mt-3 w-52 p-2 shadow"
+                  className="menu menu-sm dropdown-content bg-white text-black rounded-box z-50 mt-3 w-52 p-2 shadow"
                 >
                   <li>
                     <a className="justify-between">
@@ -109,7 +110,7 @@ const NavBar = () => {
                   <li>
                     <a>Settings</a>
                   </li>
-                  <NavLink to="home">
+                  <NavLink to="/home">
                     <button onClick={handleSignOut} className="my-btn mt-1">
                       <svg
                         viewBox="0 0 24 24"
@@ -131,7 +132,6 @@ const NavBar = () => {
                   </NavLink>
                 </ul>
               </div>
-              
             ) : (
               <NavLink to="register">
                 <button className="my-btn">
