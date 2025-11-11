@@ -10,8 +10,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <Leaf className="w-7 h-7 text-green-300" />
-            <h2 className="text-2xl font-bold tracking-wide">Cleanify</h2>
+            <h2 className="text-2xl font-bold tracking-wide">🌿Cleanify</h2>
           </div>
           <p className="text-green-100 leading-relaxed">
             Cleanify empowers communities to report and resolve local
@@ -51,7 +50,7 @@ const Footer = () => {
 
         <div>
           <h3 className="text-xl font-semibold mb-3">Connect With Us</h3>
-          <p className="text-green-100 mb-4">
+          <p className="text-green-100 mb-4 hover:text-green-300">
             Have a question or idea? Let’s connect and make change happen!
           </p>
           <div className="flex gap-4">

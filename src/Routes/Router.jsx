@@ -7,6 +7,7 @@ import MyIssue from "../Pages/MyIssue/MyIssue";
 import AddIssue from "../Pages/AddIssue/AddIssue";
 import MyContribution from "../Pages/MyContribution/MyContribution";
 import Issues from "../Pages/Issues/Issues";
+import PrivetRoute from "./PrivateRoute";
 
 
 
@@ -44,15 +45,27 @@ import Issues from "../Pages/Issues/Issues";
        },
        {
          path: "/myIssue",
-         element: <MyIssue></MyIssue>,
+         element: (
+           <PrivetRoute>
+             <MyIssue></MyIssue>
+           </PrivetRoute>
+         ),
        },
        {
          path: "/addIssue",
-         element: <AddIssue></AddIssue>,
+         element: (
+           <PrivetRoute>
+             <AddIssue></AddIssue>
+           </PrivetRoute>
+         ),
        },
        {
          path: "/myContribution",
-         element: <MyContribution></MyContribution>,
+         element: (
+           <PrivetRoute>
+             <MyContribution></MyContribution>
+           </PrivetRoute>
+         ),
        },
      ],
    },

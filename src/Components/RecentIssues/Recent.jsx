@@ -23,13 +23,17 @@ const Recent = () => {
     if(loading){
        return <Loading></Loading>
     }
-    console.log(recentIssue)
     return (
       <div className="maxWidth mx-7 md:mx-7  lg:mx-auto   ">
-        <h1 className="text-center text-4xl font-bold mb-10 text-green-700">Recent Issues </h1>
+        <h1 className="text-center text-4xl font-bold mb-10 text-green-700">
+          Recent Issues
+        </h1>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4  mb-40">
           {recentIssue.map((issue) => (
-            <div className=" custom-card rounded-2xl w-full bg-white shadow-2xl">
+            <div
+              key={issue._id}
+              className=" custom-card rounded-2xl w-full bg-white shadow-2xl"
+            >
               <div className="card-body w-full">
                 <div className="flex justify-between items-center">
                   <h2 className="font-bold  text-2xl flex-1">{issue.title}</h2>
@@ -43,7 +47,9 @@ const Recent = () => {
                   🗺️📍 {issue.location}
                 </p>
 
-                <button className="custom-btn py-2 my-2 shadow-2xl ">See Details</button>
+                <button className="custom-btn py-2 my-2 shadow-2xl ">
+                  See Details
+                </button>
               </div>
             </div>
           ))}
