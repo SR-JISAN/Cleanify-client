@@ -4,10 +4,12 @@ import Recent from '../../Components/RecentIssues/Recent';
 import VolunteerCTA from '../../Components/VolenteerCTA/VolunteerCTA';
 import Category from '../../Components/Banner/Category';
 import Community from '../../Components/Community/Community';
+import useTitle from '../../Hook/UseTitle';
 
 
 
 const Home = () => {
+    useTitle("Home")
     return (
         <div>
             <Banner></Banner>

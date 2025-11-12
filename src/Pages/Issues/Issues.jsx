@@ -3,10 +3,12 @@ import axios from 'axios';
 
 import Loading from '../../Components/Loading/Loading';
 import { AuthContext } from '../../Context/AuthContext';
-import { Navigate, useNavigate } from 'react-router';
+import {useNavigate } from 'react-router';
+import useTitle from '../../Hook/UseTitle';
 
 
 const Issues = () => {
+     useTitle("Issues");
     const [issues,setIssues] = useState([])
      const {setLoading,loading}=use(AuthContext)
      const navigate = useNavigate()

@@ -18,144 +18,92 @@ const IssueDetails = () => {
   const handleContribute = () => {
     detailsModalRef.current.showModal();
   };
+const handleContributeForm = async (e) => {
 
-//     e.preventDefault()
-//     const name = e.target.name.value
-//     const title = e.target.title.value;
-//     const email = e.target.email.value;
-//     const phone = e.target.phone.value;
-//     const amount =Number(e.target.amount.value) ;
-//     const address = e.target.address.value;
-//     const info = e.target.info.value;
-//     const newContribute = {
-//       Contribute_id: _id,
-//       title: title,
-//       name: name,
-//       email: email,
-//       phone: phone,
-//       amount: amount,
-//       address: address,
-//       info: info,
-//       photo: user.photoURL
-//     };
-//     console.log(newContribute)
-//      try {
 
-// Swal.fire({
-//   title: "Are you sure?",
-//   text: "You won't be able to revert this!",
-//   icon: "warning",
-//   showCancelButton: true,
-//   confirmButtonColor: "#3085d6",
-//   cancelButtonColor: "#d33",
-//   confirmButtonText: "Yes, Make Payment!",
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//     Swal.fire({
-//       title: "Successful 🥳",
-//       text: "Thanks For Your Contribute 🥰.",
-//       icon: "success",
-//     });
-//     console.log(result);
-//   }
-// });
+    e.preventDefault()
+    const name = e.target.name.value
+    const title = e.target.title.value;
+    const email = e.target.email.value;
+    const phone = e.target.phone.value;
+    const amount =Number(e.target.amount.value) ;
+    const address = e.target.address.value;
+    const info = e.target.info.value;
+    const newContribute = {
+      Contribute_id: _id,
+      title: title,
+      name: name,
+      email: email,
+      phone: phone,
+      amount: amount,
+      address: address,
+      info: info,
+      photo: user.photoURL
+    };
+    console.log(newContribute)
+     try {
 
-//       const res = await axios.post(
-//         "http://localhost:5000/contributes",
-//         newContribute,
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
-//        setContributors((prev) => {
-//          const updated = [...prev, res.data || newContribute]; 
-         
-//          return updated.sort((a, b) => b.amount - a.amount);
-//        });
+Swal.fire({
+  title: "Are you sure?",
+  text: `You are about to contribute $${amount}.`,
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, Make Payment!",
+}).then(async (result) => {
+  if (result.isConfirmed) {
+    const res = await axios.post(
+      "http://localhost:5000/contributes",
+      newContribute,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    setContributors((prev) => {
+      const updated = [...prev, res.data || newContribute];
+
+      return updated.sort((a, b) => b.amount - a.amount);
+    });
+    Swal.fire({
+      title: "Successful 🥳",
+      text: "Thanks For Your Contribute 🥰.",
+      icon: "success",
+    });
+    console.log(result);
+  }
+});
+
+      
       
          
-//       e.target.reset(); 
-//       detailsModalRef.current.close();
-//      } catch (error) {
-//        console.error(error);
-//      }
-//   };
-
-const handleContributeForm = async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const amount = Number(form.amount.value);
-
-  const newContribute = {
-    Contribute_id: _id,
-    title: form.title.value,
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    amount,
-    address: form.address.value,
-    info: form.info.value,
-    photo: user.photoURL,
+      e.target.reset(); 
+      detailsModalRef.current.close();
+     } catch (error) {
+       console.error(error);
+     }
   };
 
-  Swal.fire({
-    title: "Confirm Payment?",
-    text: `You are about to contribute $${amount}.`,
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Yes, Pay Now!",
-    cancelButtonText: "Cancel",
-  }).then(async (result) => {
-    if (result.isConfirmed) {
+
+
+   
+  useEffect(() => {
+    const interval = setInterval(async () => {
       try {
-        const res = await axios.post(
-          "http://localhost:5000/contributes",
-          newContribute,
-          {
-            headers: { "Content-Type": "application/json" },
-          }
+        const res = await fetch(
+          `http://localhost:5000/issues/contributes/${_id}`
         );
-
-        setContributors((prev) => {
-          const updated = [...prev, res.data || newContribute];
-          return updated.sort((a, b) => b.amount - a.amount);
-        });
-
-        Swal.fire("Successful 🥳", "Thanks for your contribution!", "success");
-
-        form.reset();
-        detailsModalRef.current.close();
+        const data = await res.json();
+        setContributors(data.sort((a, b) => b.amount - a.amount));
       } catch (err) {
         console.error(err);
-        Swal.fire("Error", "Something went wrong while submitting.", "error");
       }
-    }
-  });
-};
+    }, 1000); 
 
-
-   
-   useEffect(() => {
-     const loadContributors = async () => {
-       try {
-         
-         const res = await fetch(
-           `http://localhost:5000/issues/contributes/${_id}`
-         );
-         const data = await res.json();
-        
-         setContributors(data.sort((a, b) => b.amount - a.amount));
-       } catch (err) {
-         console.error(err);
-       } 
-     };
-
-   
-     if (_id) loadContributors();
-
-   }, [_id]);
+    return () => clearInterval(interval);
+  }, [_id]);
 
 
    if (loading) return <Loading></Loading>;
@@ -218,6 +166,7 @@ const handleContributeForm = async (e) => {
         </div>
 
         <dialog
+           
           ref={detailsModalRef}
           className="modal modal-bottom  sm:modal-middle"
         >
@@ -287,9 +236,9 @@ const handleContributeForm = async (e) => {
                   Contribute Amount
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   name="amount"
-                  step="any"
+                 
                   className="input input-bordered border-2 border-green-700 w-full"
                   placeholder="Contribute Amount"
                   min="0"

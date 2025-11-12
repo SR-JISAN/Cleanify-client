@@ -9,6 +9,7 @@ import MyContribution from "../Pages/MyContribution/MyContribution";
 import Issues from "../Pages/Issues/Issues";
 import PrivetRoute from "./PrivateRoute";
 import IssueDetails from "../Pages/IssueDetails/IssueDetails";
+import NotFound from "../Pages/NotFound/NotFound";
 
 
 
@@ -77,6 +78,10 @@ import IssueDetails from "../Pages/IssueDetails/IssueDetails";
            </PrivetRoute>
          ),
        },
+       {
+        path:"*",
+        element:<NotFound></NotFound>
+       }
      ],
    },
  ]);

@@ -1,13 +1,17 @@
 import axios from 'axios';
-import React, { use, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 
 import { AuthContext } from '../../Context/AuthContext';
 import Loading from '../Loading/Loading';
+import { useNavigate } from 'react-router';
+
 
 const Recent = () => {
+  const navigate =useNavigate()
     const [recentIssue,setRecentIssue] = useState([])
-     const {setLoading,loading}=use(AuthContext)
+     const {setLoading,loading}=useContext(AuthContext)
+    
     useEffect(()=>{
         axios.get("http://localhost:5000/issuesLimit")
               .then(res=>{
@@ -47,7 +51,10 @@ const Recent = () => {
                   🗺️📍 {issue.location}
                 </p>
 
-                <button className="custom-btn py-2 my-2 shadow-2xl ">
+                <button
+                  onClick={() => navigate(`/issueDetails/${issue._id}`)}
+                  className="custom-btn py-2 my-2 shadow-2xl "
+                >
                   See Details
                 </button>
               </div>
