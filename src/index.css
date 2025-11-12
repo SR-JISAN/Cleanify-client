@@ -8,9 +8,9 @@
 }
 
 
-:root {
+:root{
   color: black;
-  background-color: white;
+  --color-base-100:white;
 }
 
 

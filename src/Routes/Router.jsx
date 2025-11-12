@@ -8,6 +8,7 @@ import AddIssue from "../Pages/AddIssue/AddIssue";
 import MyContribution from "../Pages/MyContribution/MyContribution";
 import Issues from "../Pages/Issues/Issues";
 import PrivetRoute from "./PrivateRoute";
+import IssueDetails from "../Pages/IssueDetails/IssueDetails";
 
 
 
@@ -64,6 +65,15 @@ import PrivetRoute from "./PrivateRoute";
          element: (
            <PrivetRoute>
              <MyContribution></MyContribution>
+           </PrivetRoute>
+         ),
+       },
+       {
+         path: "/issueDetails/:id",
+         loader: ({params}) => fetch(`http://localhost:5000/issues/${params.id}`),
+         element: (
+           <PrivetRoute>
+             <IssueDetails></IssueDetails>
            </PrivetRoute>
          ),
        },

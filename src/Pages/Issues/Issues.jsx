@@ -3,12 +3,13 @@ import axios from 'axios';
 
 import Loading from '../../Components/Loading/Loading';
 import { AuthContext } from '../../Context/AuthContext';
+import { Navigate, useNavigate } from 'react-router';
 
 
 const Issues = () => {
     const [issues,setIssues] = useState([])
      const {setLoading,loading}=use(AuthContext)
-
+     const navigate = useNavigate()
      useEffect(()=>{
         axios.get("http://localhost:5000/issues")
               .then(res=>{
@@ -57,8 +58,16 @@ const Issues = () => {
                     {" "}
                     🗺️📍 {issue.location}
                   </p>
-                  <p className='font-bold text-lg text-gray-500'>$ <span className='text-green-700 shadow-2xl shadow-cyan-900'>{issue.amount}</span></p>
-                  <button className="custom-btn py-2 my-2 shadow-2xl ">
+                  <p className="font-bold text-lg text-gray-500">
+                    ${" "}
+                    <span className="text-green-700 shadow-2xl shadow-cyan-900">
+                      {issue.amount}
+                    </span>
+                  </p>
+                  <button
+                    onClick={() => navigate(`/issueDetails/${issue._id}`)}
+                    className="custom-btn py-2 my-2 shadow-2xl "
+                  >
                     See Details
                   </button>
                 </div>
