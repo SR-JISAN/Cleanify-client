@@ -271,7 +271,7 @@ Swal.fire({
       {/* ---------contributors--------- */}
       <div className="overflow-x-auto mt-8">
         <h1 className="my-10 text-4xl font-bold text-green-700">
-          Contributed For This Product {contributors.length}
+          Contributed For This Issue: {contributors.length}
         </h1>
         <div className="overflow-x-auto mx-auto">
           <table className="table">

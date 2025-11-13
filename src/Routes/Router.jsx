@@ -71,7 +71,8 @@ import NotFound from "../Pages/NotFound/NotFound";
        },
        {
          path: "/issueDetails/:id",
-         loader: ({params}) => fetch(`http://localhost:5000/issues/${params.id}`),
+         loader: ({ params }) =>
+           fetch(`http://localhost:5000/issueDetails/${params.id}`),
          element: (
            <PrivetRoute>
              <IssueDetails></IssueDetails>
@@ -79,9 +80,9 @@ import NotFound from "../Pages/NotFound/NotFound";
          ),
        },
        {
-        path:"*",
-        element:<NotFound></NotFound>
-       }
+         path: "*",
+         element: <NotFound></NotFound>,
+       },
      ],
    },
  ]);

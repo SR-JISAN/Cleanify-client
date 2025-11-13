@@ -13,15 +13,27 @@ const Recent = () => {
      const {setLoading,loading}=useContext(AuthContext)
     
     useEffect(()=>{
-        axios.get("http://localhost:5000/issuesLimit")
-              .then(res=>{
-                  setRecentIssue(res.data)
-                  setLoading(false)
-              })
-              .catch(err=>{
-                console.log("fetch error",err)
-                setLoading(false)
-              })
+       const fetchIssues = () => {
+         setLoading(true);
+         axios
+           .get("http://localhost:5000/issuesLimit")
+           .then((res) => {
+             setRecentIssue(res.data);
+             setLoading(false);
+           })
+           .catch((err) => {
+             console.log("fetch error", err);
+             setLoading(false);
+           });
+       };
+
+       fetchIssues();
+
+     
+       const intervalId = setInterval(fetchIssues, 120000); 
+
+      
+       return () => clearInterval(intervalId);
     },[setLoading])
 
     if(loading){

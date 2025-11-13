@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useTitle from '../../Hook/UseTitle';
 
 const AddIssue = () => {
+  useTitle("AddIssue");
     const {user}=useContext(AuthContext)
     const [imageUrl, setImageUrl] = useState("");
 
@@ -36,7 +38,7 @@ const AddIssue = () => {
          setUploading(false);
        }
      };
-     const date = new Date().toLocaleDateString("en-GB");
+     const date = new Date().toISOString().split("T")[0];
     const handleIssueFrom =async(e)=>{
         e.preventDefault()
         if (!imageUrl) {
@@ -51,18 +53,19 @@ const AddIssue = () => {
         const location = from.location.value 
         const  description = from.description.value
         const image = imageUrl;
-        const amount = from.amount.value
+        const amount = parseInt(from.amount.value); 
         const email =from.email.value 
         const newIssue = {
-         title: title,
-         category: category,
-         location: location,
-         description: description,
-         image: image,
-         amount: amount,
-         email: email,
-         date: date,
-         status: "On Going"
+          title: title,
+          category: category,
+          location: location,
+          description: description,
+          image: image,
+          amount: amount,
+          email: email,
+          date: date,
+          status: "On Going",
+          name: user?.displayName
         };
           try {
       const res = await axios.post("http://localhost:5000/issues", newIssue);
@@ -71,6 +74,7 @@ const AddIssue = () => {
         position: "top-end",
         icon: "success",
         title: "Your Issue Is Added",
+        status: "On Going",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -154,6 +158,7 @@ const AddIssue = () => {
                 required
               ></textarea>
             </div>
+
             <div>
               <label className="label">
                 <span className="label-text font-semibold">Upload Image</span>
