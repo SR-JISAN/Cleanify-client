@@ -11,16 +11,17 @@ const IssueDetails = () => {
   useTitle("IssueDetails");
   const details = useLoaderData();
   const {_id} =details
-      const [contributors, setContributors] = useState([]);
+  const [contributors, setContributors] = useState([]);
   const { user,loading } = useContext(AuthContext);
   const detailsModalRef = useRef();
   const today = new Date().toLocaleDateString();
   const handleContribute = () => {
     detailsModalRef.current.showModal();
   };
+  
+
+
 const handleContributeForm = async (e) => {
-
-
     e.preventDefault()
     const name = e.target.name.value
     const title = e.target.title.value;
@@ -29,6 +30,8 @@ const handleContributeForm = async (e) => {
     const amount =Number(e.target.amount.value) ;
     const address = e.target.address.value;
     const info = e.target.info.value;
+    const now = new Date();
+    const formatted = now.toLocaleString();
     const newContribute = {
       Contribute_id: _id,
       title: title,
@@ -38,7 +41,9 @@ const handleContributeForm = async (e) => {
       amount: amount,
       address: address,
       info: info,
-      photo: user.photoURL
+      photo: user.photoURL,
+      category: details.category,
+      date: formatted,
     };
     console.log(newContribute)
      try {
@@ -72,13 +77,8 @@ Swal.fire({
       text: "Thanks For Your Contribute 🥰.",
       icon: "success",
     });
-    console.log(result);
   }
-});
-
-      
-      
-         
+});       
       e.target.reset(); 
       detailsModalRef.current.close();
      } catch (error) {
@@ -86,9 +86,6 @@ Swal.fire({
      }
   };
 
-
-
-   
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
@@ -100,14 +97,11 @@ Swal.fire({
       } catch (err) {
         console.error(err);
       }
-    }, 1000); 
+    }, 2000); 
 
     return () => clearInterval(interval);
   }, [_id]);
-
-
    if (loading) return <Loading></Loading>;
-    console.log(contributors)
   return (
     <div className="maxWidth mx-auto">
       <div className="max-w-5xl mx-auto mt-20 p-6 bg-white shadow-xl rounded-3xl  ">
@@ -319,7 +313,7 @@ Swal.fire({
                       {contributor?.email}
                     </span>
                   </td>
-                  <td className="font-bold">{contributor?.amount}</td>
+                  <td className="font-bold">$ {contributor?.amount}</td>
                 </tr>
               ))}
             </tbody>
