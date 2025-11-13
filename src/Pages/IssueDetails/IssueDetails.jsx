@@ -1,33 +1,30 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useLoaderData } from 'react-router';
-import { AuthContext } from '../../Context/AuthContext';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import Loading from '../../Components/Loading/Loading';
-import useTitle from '../../Hook/UseTitle';
-
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useLoaderData } from "react-router";
+import { AuthContext } from "../../Context/AuthContext";
+import axios from "axios";
+import Swal from "sweetalert2";
+import Loading from "../../Components/Loading/Loading";
+import useTitle from "../../Hook/UseTitle";
 
 const IssueDetails = () => {
   useTitle("IssueDetails");
   const details = useLoaderData();
-  const {_id} =details
+  const { _id } = details;
   const [contributors, setContributors] = useState([]);
-  const { user,loading } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const detailsModalRef = useRef();
   const today = new Date().toLocaleDateString();
   const handleContribute = () => {
     detailsModalRef.current.showModal();
   };
-  
 
-
-const handleContributeForm = async (e) => {
-    e.preventDefault()
-    const name = e.target.name.value
+  const handleContributeForm = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
     const title = e.target.title.value;
     const email = e.target.email.value;
     const phone = e.target.phone.value;
-    const amount =Number(e.target.amount.value) ;
+    const amount = Number(e.target.amount.value);
     const address = e.target.address.value;
     const info = e.target.info.value;
     const now = new Date();
@@ -45,63 +42,62 @@ const handleContributeForm = async (e) => {
       category: details.category,
       date: formatted,
     };
-    console.log(newContribute)
-     try {
+    console.log(newContribute);
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `You are about to contribute $${amount}.`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Make Payment!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axios.post(
+            "https://cleanify-server-psi.vercel.app/contributes",
+            newContribute,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          setContributors((prev) => {
+            const updated = [...prev, res.data || newContribute];
 
-Swal.fire({
-  title: "Are you sure?",
-  text: `You are about to contribute $${amount}.`,
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, Make Payment!",
-}).then(async (result) => {
-  if (result.isConfirmed) {
-    const res = await axios.post(
-      "http://localhost:5000/contributes",
-      newContribute,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    setContributors((prev) => {
-      const updated = [...prev, res.data || newContribute];
-
-      return updated.sort((a, b) => b.amount - a.amount);
-    });
-    Swal.fire({
-      title: "Successful 🥳",
-      text: "Thanks For Your Contribute 🥰.",
-      icon: "success",
-    });
-  }
-});       
-      e.target.reset(); 
+            return updated.sort((a, b) => b.amount - a.amount);
+          });
+          Swal.fire({
+            title: "Successful 🥳",
+            text: "Thanks For Your Contribute 🥰.",
+            icon: "success",
+          });
+        }
+      });
+      e.target.reset();
       detailsModalRef.current.close();
-     } catch (error) {
-       console.error(error);
-     }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/issues/contributes/${_id}`
+          `https://cleanify-server-psi.vercel.app/issues/contributes/${_id}`
         );
         const data = await res.json();
         setContributors(data.sort((a, b) => b.amount - a.amount));
       } catch (err) {
         console.error(err);
       }
-    }, 2000); 
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [_id]);
-   if (loading) return <Loading></Loading>;
+  if (loading) return <Loading></Loading>;
   return (
     <div className="maxWidth mx-auto">
       <div className="max-w-5xl mx-auto mt-20 p-6 bg-white shadow-xl rounded-3xl  ">
@@ -160,7 +156,6 @@ Swal.fire({
         </div>
 
         <dialog
-           
           ref={detailsModalRef}
           className="modal modal-bottom  sm:modal-middle"
         >
@@ -232,7 +227,6 @@ Swal.fire({
                 <input
                   type="text"
                   name="amount"
-                 
                   className="input input-bordered border-2 border-green-700 w-full"
                   placeholder="Contribute Amount"
                   min="0"

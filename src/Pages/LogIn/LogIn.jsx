@@ -1,18 +1,41 @@
-import React, { use } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import useTitle from '../../Hook/UseTitle';
+import { Eye, EyeClosed } from 'lucide-react';
+import Swal from 'sweetalert2';
 
 const LogIn = () => {
-    const { signInWithGoogle, signInUser } = use(AuthContext);
+  useTitle("LogIn");
+    const { signInWithGoogle, signInUser } = useContext(AuthContext);
     const location = useLocation()
     const navigate = useNavigate()
+      const [passError, setPassError] = useState(false);
+       const [emailError, setEmailError] = useState(false);
+       const [open,setOpen] =useState(false)
+    
     const handelSubmit =(e)=>{
         e.preventDefault()
         const email = e.target.email.value
         const pass = e.target.pass.value
+
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!gmailRegex.test(email)) {
+          setEmailError(true);
+          return;
+        }
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+  if (!passwordRegex.test(pass)) {
+    setPassError(true);
+    return;
+  }
+
         signInUser(email,pass)
         .then(result=>{
-            console.log(result)
+          if(result){
+
+            Swal.fire("Success!", "Account created successfully", "success");
+          }
           navigate(location.state || "/home");
 
         }).catch(err=>{
@@ -22,13 +45,22 @@ const LogIn = () => {
     const handleGoogle = () => {
       signInWithGoogle()
         .then((result) => {
-          console.log(result);
+          if (result) {
+            Swal.fire("Success!", "Account created successfully", "success");
+          }
           navigate(location.state || "/home");
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
+          if(err){
+
+            Swal.fire("Error invalid Account");
+          }
         });
     };
+     const handleEys = () => {
+       setOpen(!open);
+     };
     return (
       <div className="hero-content flex-col">
         <div className="text-center">
@@ -43,11 +75,34 @@ const LogIn = () => {
                   <span>Your Email</span>
                   <i></i>
                 </div>
-                <div className="inputBox mt-3">
-                  <input name="pass" required="required" type="password" />
-                  <span>Password</span>
-                  <i></i>
+                {emailError && (
+                  <p className="text-red-600 my-2">
+                    Enter a valid email like example@gmail.com
+                  </p>
+                )}
+                <div className="flex items-center relative">
+                  <div className="inputBox mt-3">
+                    <input
+                      name="pass"
+                      required
+                      type={open ? "text" : "password"}
+                    />
+                    <span className="">Password</span>
+                    <i></i>
+                  </div>
+                  <div
+                    onClick={handleEys}
+                    className="absolute z-50 right-4 bottom-2"
+                  >
+                    {open ? <EyeClosed /> : <Eye />}
+                  </div>
                 </div>
+                {passError && (
+                  <p className="text-red-600 my-2">
+                    Password must be at least 6 characters long and include both
+                    uppercase and lowercase letters
+                  </p>
+                )}
                 <div>
                   <Link to="/register" className="link link-hover">
                     Don't have account?

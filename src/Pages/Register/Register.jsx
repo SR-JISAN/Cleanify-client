@@ -1,51 +1,76 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
-
+import useTitle from "../../Hook/UseTitle";
+import Swal from "sweetalert2";
+import { Eye, EyeClosed } from "lucide-react";
 
 const Register = () => {
+  useTitle("Register");
+  const { createUser, signInWithGoogle, updateUserProfile } =useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const { createUser, signInWithGoogle } = useContext(AuthContext);
-  const location = useLocation()
-  const navigate = useNavigate()
+  const [emailError, setEmailError] = useState(false);
+  const [passError, setPassError] = useState(false);
+  const [open,setOpen] =useState(false)
+
   const handelSubmit = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const photo = e.target.photo.value;
+    setEmailError(false);
+    setPassError(false);
+
+    const name = e.target.name.value.trim();
+    const email = e.target.email.value.trim();
+    const photo = e.target.photo.value.trim();
     const pass = e.target.pass.value;
-    console.log(email, name, photo, pass);
-    try {
-     createUser(email, pass)
-       .then(result=>{
-        console.log(result)
-      }).catch(error=>{
-        console.log('error happened', error)
-      })
-      navigate(location.state || '/home')
-     
-    } catch (error) {
-      console.log(error);
+
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!gmailRegex.test(email)) {
+      setEmailError(true)
+      return;
     }
+
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(pass)) {
+      setPassError(true);
+      return; 
+    }
+
+    try {
+   
+      const userCredential = await createUser(email, pass);
+      if(userCredential){
+
+        Swal.fire("Success!", "Account created successfully", "success");
+      }
+
+    
+      await updateUserProfile({ displayName: name, photoURL: photo });
+
+      navigate(location.state || "/home");
+    } catch (error) {
+      console.error(error);
+      Swal.fire("Error Account Already in use ");
+    }
+
     e.target.reset();
   };
 
-
   const handleGoogle = () => {
     signInWithGoogle()
-    .then(result =>{
-        console.log(result)
-      navigate(location.state || "/home");
-
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-
-    
+      .then((result) => {
+        console.log(result);
+        navigate(location.state || "/home");
+      })
+      .catch((err) => console.dir(err));
   };
 
-  
+  const handleEys =()=>{
+    setOpen(!open)
+  }
+
   return (
     <div className="hero-content flex-col">
       <div className="text-center">
@@ -57,30 +82,56 @@ const Register = () => {
           <form onSubmit={handelSubmit}>
             <fieldset className="fieldset">
               <div className="inputBox">
-                <input name="name" required="required" type="text" />
-                <span>You Name</span>
+                <input name="name" required type="text" />
+                <span>Your Name</span>
                 <i></i>
               </div>
+
               <div className="inputBox my-3">
-                <input name="email" required="required" type="email" />
+                <input name="email" required type="text" />
                 <span>Your Email</span>
                 <i></i>
               </div>
+              {emailError && (
+                <p className="text-red-600 my-2">
+                  Enter a valid email like example@gmail.com
+                </p>
+              )}
+
               <div className="inputBox">
-                <input name="photo" required="required" type="text" />
+                <input name="photo" required type="text" />
                 <span>Photo URL</span>
                 <i></i>
               </div>
-              <div className="inputBox mt-3">
-                <input name="pass" required="required" type="password" />
-                <span>Password</span>
-                <i></i>
+              <div className="flex items-center relative">
+                <div className="inputBox mt-3">
+                  <input
+                    name="pass"
+                    required
+                    type={open ? "text" : "password"}
+                  />
+                  <span className="">Password</span>
+                  <i></i>
+                </div>
+                <div
+                  onClick={handleEys}
+                  className="absolute z-50 right-4 bottom-2"
+                >
+                  {open ? <EyeClosed /> : <Eye />}
+                </div>
               </div>
+              {passError && (
+                <p className="text-red-600 my-2">
+                  Password must be at least 6 characters long and include both
+                  uppercase and lowercase letters
+                </p>
+              )}
+
               <div>
                 <Link to="/login" className="link link-hover">
                   Already have Account?{" "}
                   <span className="hover:text-blue-800 hover:font-bold ml-0.5 hover:border-b-blue-800">
-                    LogIn
+                    Log In
                   </span>
                 </Link>
               </div>
@@ -91,9 +142,10 @@ const Register = () => {
               </div>
             </fieldset>
           </form>
+
           <button
             onClick={handleGoogle}
-            className="btn  bg-white text-black border-[#e5e5e5] rounded-2xl"
+            className="btn bg-white text-black border-[#e5e5e5]"
           >
             <svg
               aria-label="Google logo"

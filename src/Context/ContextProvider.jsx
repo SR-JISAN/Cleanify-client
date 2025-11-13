@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import Loading from '../Components/Loading/Loading';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init.js';
 import { GoogleAuthProvider } from 'firebase/auth';
 
@@ -35,7 +35,13 @@ function ContextProvider({ children }) {
     setLoading(true)
         return signInWithPopup(auth,googleSignIn)
   }
-
+    const updateUserProfile = (profile) => {
+      if (auth.currentUser) {
+        return updateProfile(auth.currentUser, profile);
+      } else {
+        return Promise.reject(new Error("No user is signed in"));
+      }
+    };
   // observer
 
   useEffect(()=>{
@@ -54,6 +60,7 @@ function ContextProvider({ children }) {
     signInUser,
     signInWithGoogle,
     singOutUser,
+    updateUserProfile,
     user,
     loading,
     setLoading,

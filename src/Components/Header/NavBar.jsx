@@ -1,7 +1,8 @@
-import { TextAlignJustify, TextAlignStart } from 'lucide-react';
+import { TextAlignJustify, TextAlignStart, User } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const NavBar = () => {
   const { user, singOutUser } = useContext(AuthContext);
@@ -13,14 +14,18 @@ const NavBar = () => {
     const handleSignOut = ()=>{
       singOutUser()
         .then((result) => {
-          console.log(result);
+          if(result){
+            Swal.fire("Success!", "Sign Out", "success");
+          }
           setMenu(false);
         })
         .catch((err) => {
-          console.log(err);
+          if(err){
+           Swal.fire("alert!", "Sign Out Error", "alert"); 
+          };
         });
     }
-
+ console.log(user)
     const links = (
       <>
         <NavLink to="/home">
@@ -92,8 +97,8 @@ const NavBar = () => {
                 >
                   <div className="w-10 rounded-full">
                     <img
-                      alt="Tailwind CSS Navbar component"
-                      src={user.photoURL}
+                      alt={User?.name}
+                      src={user?.photoURL}
                     />
                   </div>
                 </div>
@@ -104,13 +109,12 @@ const NavBar = () => {
                   <li>
                     <a className="justify-between">
                       Profile
-                      <span className="badge">New</span>
                     </a>
                   </li>
                   <li>
                     <a>Settings</a>
                   </li>
-                  <NavLink to="/home">
+                  <Link to="/home">
                     <button onClick={handleSignOut} className="my-btn mt-1">
                       <svg
                         viewBox="0 0 24 24"
@@ -129,7 +133,7 @@ const NavBar = () => {
                         <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                       </svg>
                     </button>
-                  </NavLink>
+                  </Link>
                 </ul>
               </div>
             ) : (

@@ -106,7 +106,6 @@ ul a.active {
 }
 
 
-/* From Uiverse.io by VijinV */ 
 .inputBox {
   position: relative;
   width: 100%;
@@ -120,7 +119,7 @@ ul a.active {
   outline: none;
   box-shadow: none;
   border: none;
-  color: #23242a;
+  color: white;
   font-size: 1em;
   letter-spacing: 0.05em;
   transition: 0.5s;
@@ -132,7 +131,7 @@ ul a.active {
   left: 0;
   padding: 20px 10px 10px;
   font-size: 1em;
-  color: #8f8f8f;
+  color: #2b40ba;
   letter-spacing: 00.05em;
   transition: 0.5s;
   pointer-events: none;
@@ -140,7 +139,7 @@ ul a.active {
 
 .inputBox input:valid ~span,
 .inputBox input:focus ~span {
-  color: greenyellow;
+  color: #2b40ba;
   transform: translateX(-10px) translateY(-34px);
   font-size: 0,75em;
 }
@@ -151,7 +150,7 @@ ul a.active {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: greenyellow;
+  background: rgb(9, 135, 7);
   border-radius: 4px;
   transition: 0.5s;
   pointer-events: none;
@@ -172,7 +171,7 @@ ul a.active {
   outline: none;
   box-shadow: none;
   border: none;
-  color: #23242a;
+  color: white;
   font-size: 1em;
   letter-spacing: 0.05em;
   transition: 0.5s;
@@ -184,7 +183,7 @@ ul a.active {
   left: 0;
   padding: 20px 10px 10px;
   font-size: 1em;
-  color: #8f8f8f;
+  color: #2b40ba;
   letter-spacing: 00.05em;
   transition: 0.5s;
   pointer-events: none;
@@ -192,7 +191,7 @@ ul a.active {
 
 .inputBox input:valid ~span,
 .inputBox input:focus ~span {
-  color: greenyellow;
+  color: rgb(9, 135, 7);
   transform: translateX(-10px) translateY(-34px);
   font-size: 0,75em;
 }
@@ -203,7 +202,7 @@ ul a.active {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: greenyellow;
+  background: rgb(9, 135, 7);
   border-radius: 4px;
   transition: 0.5s;
   pointer-events: none;
@@ -223,7 +222,7 @@ ul a.active {
   outline: none;
   box-shadow: none;
   border: none;
-  color: #23242a;
+  color: white;
   font-size: 1em;
   letter-spacing: 0.05em;
   transition: 0.5s;
@@ -235,7 +234,7 @@ ul a.active {
   left: 0;
   padding: 20px 10px 10px;
   font-size: 1em;
-  color: #8f8f8f;
+  color: #2b40ba;
   letter-spacing: 00.05em;
   transition: 0.5s;
   pointer-events: none;
@@ -243,7 +242,7 @@ ul a.active {
 
 .inputBox input:valid ~span,
 .inputBox input:focus ~span {
-  color: greenyellow;
+  color: rgb(9, 135, 7);
   transform: translateX(-10px) translateY(-34px);
   font-size: 0,75em;
 }
@@ -254,7 +253,7 @@ ul a.active {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: greenyellow;
+  background: rgb(9, 135, 7);
   border-radius: 4px;
   transition: 0.5s;
   pointer-events: none;
@@ -273,7 +272,7 @@ ul a.active {
   outline: none;
   box-shadow: none;
   border: none;
-  color: #23242a;
+  color: white;
   font-size: 1em;
   letter-spacing: 0.05em;
   transition: 0.5s;
@@ -285,7 +284,7 @@ ul a.active {
   left: 0;
   padding: 20px 10px 10px;
   font-size: 1em;
-  color: #8f8f8f;
+  color: #2b40ba;
   letter-spacing: 00.05em;
   transition: 0.5s;
   pointer-events: none;
@@ -293,18 +292,19 @@ ul a.active {
 
 .inputBox input:valid ~span,
 .inputBox input:focus ~span {
-  color: greenyellow;
+  color: rgb(9, 135, 7);
   transform: translateX(-10px) translateY(-34px);
   font-size: 0,75em;
 }
 
 .inputBox i {
+  font-size: larger;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: greenyellow;
+  background: rgb(9, 135, 7);
   border-radius: 4px;
   transition: 0.5s;
   pointer-events: none;
